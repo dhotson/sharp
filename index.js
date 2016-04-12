@@ -97,6 +97,7 @@ var Sharp = function(input, options) {
     formatOut: 'input',
     fileOut: '',
     progressive: false,
+    lossless: false,
     quality: 80,
     compressionLevel: 6,
     withoutAdaptiveFiltering: false,
@@ -976,8 +977,17 @@ Sharp.prototype.png = function() {
 /*
   Force WebP output
 */
-Sharp.prototype.webp = function() {
+Sharp.prototype.webp = function(lossless) {
   this.options.formatOut = 'webp';
+
+  if (isDefined(lossless)) {
+    if (isBoolean(lossless)) {
+      this.options.lossless = lossless;
+    } else {
+      throw new Error('Non-boolean value for lossless');
+    }
+  }
+
   return this;
 };
 

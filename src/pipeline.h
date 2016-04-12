@@ -72,6 +72,7 @@ struct PipelineBaton {
   bool progressive;
   bool withoutEnlargement;
   VipsAccess accessMethod;
+  bool lossless;
   int quality;
   int compressionLevel;
   bool withoutAdaptiveFiltering;
@@ -133,6 +134,7 @@ struct PipelineBaton {
     extendRight(0),
     progressive(false),
     withoutEnlargement(false),
+    lossless(false),
     quality(80),
     compressionLevel(6),
     withoutAdaptiveFiltering(false),
